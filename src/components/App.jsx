@@ -1,16 +1,25 @@
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import { ToastContainer } from 'react-toastify';
+import { Searchbar } from './Searchbar';
+import { ImageGallery } from './ImageGallery';
+
 export const App = () => {
+  const [keyword, setKeyword] = useState('');
+
+  const handlerSearchSubmit = keyword => {
+    setKeyword(keyword);
+  }
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <Searchbar onSubmit={handlerSearchSubmit} />
+      <ImageGallery propKeyword={keyword} />
+      <ToastContainer autoClose={3000} styled />
     </div>
   );
+};
+
+App.propTypes = {
+  keyword: PropTypes.string,
 };
