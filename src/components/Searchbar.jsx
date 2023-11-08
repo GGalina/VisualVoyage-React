@@ -35,6 +35,7 @@ export const Searchbar = ({ onSubmit }) => {
               width: 20,
               height: 20,
               marginTop: 6,
+              color: '#7395AE',
             }}
           />
           <SearchBtnLabel>Search</SearchBtnLabel>

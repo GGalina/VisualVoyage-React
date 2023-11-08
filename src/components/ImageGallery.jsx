@@ -5,7 +5,7 @@ import { Loader } from './Loader';
 import { ImageGalleryItem } from './ImageGalleryItem';
 import { Button } from './Button';
 import { Modal } from './Modal';
-import { Gallery, } from './ImageFinder.styled';
+import { Gallery, GlobalStyles} from './ImageFinder.styled';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const ImageGallery = ({ propKeyword }) => {
@@ -55,10 +55,13 @@ export const ImageGallery = ({ propKeyword }) => {
     };
 
     const openModal = modalData => {
+        document.body.classList.add('modal-open');
         setModalData(modalData);
+
     };
 
     const closeModal = () => {
+        document.body.classList.remove('modal-open');
         setModalData(null);
     };
 
@@ -85,7 +88,8 @@ export const ImageGallery = ({ propKeyword }) => {
             )}
             {isLoading && <Loader />}
             </>
-        )}
+            )}
+        <GlobalStyles />
         {modalData && <Modal onClose={closeModal} {...modalData} />}
         </>
     );

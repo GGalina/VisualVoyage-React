@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Overlay, ModalBlock } from './ImageFinder.styled';
+import { Overlay, ModalBlock, Image } from './ImageFinder.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -20,10 +20,11 @@ export const Modal = ({ largeImageURL, tags, onClose }) => {
             onClose();
         }
     };
+
     return createPortal(
         <Overlay onClick={handleBackdropClick}>
             <ModalBlock>
-                <img src={largeImageURL} alt={tags} />
+                <Image src={largeImageURL} alt={tags} />
             </ModalBlock>
         </Overlay>,
         modalRoot
